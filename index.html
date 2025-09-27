@@ -187,7 +187,7 @@
         <div class="container">
             <h1>💰 SavvyFinance</h1>
             <p>Your Professional Financial Resource</p>
-            <button class="login-btn" onclick="showLogin()">Admin Login</button>
+            <button class="login-btn" onclick="testLogin()">Admin Login</button>
         </div>
     </header>
 
@@ -290,34 +290,24 @@
         </div>
     </footer>
 
-    <script>
-function showLogin() {
-    const email = prompt("Email:");
-    const password = prompt("Password:");
-    
-    if (!email || !password) return;
-    
-    // Llamada real al backend
+   <script>
+function testLogin() {
     fetch('https://savvyfinance-api-2025.onrender.com/api/auth/login', {
         method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-        },
+        headers: {'Content-Type': 'application/json'},
         body: JSON.stringify({
-            email: email,
-            password: password
+            email: 'hello@savvyfinance.com',
+            password: 'SavvyFinance@!'
         })
     })
-    .then(response => response.json())
-    .then(data => {
-        if (data.access_token) {
-            alert('🎉 ¡Login exitoso!\n\nBienvenido: ' + data.user.email + '\nRol: ' + data.user.role + '\n\n✅ Backend conectado correctamente!');
+    .then(r => r.json())
+    .then(d => {
+        if(d.access_token) {
+            alert('✅ LOGIN EXITOSO!\nBackend conectado!\nToken: ' + d.access_token);
         } else {
-            alert('❌ Credenciales incorrectas');
+            alert('❌ Error: ' + JSON.stringify(d));
         }
     })
-    .catch(error => {
-        alert('❌ Error de conexión: ' + error.message);
-    });
+    .catch(e => alert('❌ Error conexión: ' + e));
 }
 </script>
