@@ -1,0 +1,353 @@
+info
+
+code
+Code
+
+preview
+Preview
+
+Deploy
+Deploy
+Robot
+Hey Sidali, Quick input needed :
+Ask Question
+Agent will continue working after your reply
+📋 CÓDIGO PARA COPIAR:
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SavvyFinance - Panel de Administración</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background-color: #f8fafc;
+            min-height: 100vh;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #059669 0%, #2563eb 100%);
+            color: white;
+            padding: 1rem 0;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+        
+        .user-info {
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+        }
+        
+        .main {
+            padding: 2rem 0;
+        }
+        
+        .dashboard-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+        
+        .card {
+            background: white;
+            border-radius: 1rem;
+            padding: 1.5rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
+        
+        .card h2 {
+            margin-bottom: 1rem;
+            color: #1f2937;
+        }
+        
+        .form-group {
+            margin-bottom: 1rem;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: #374151;
+        }
+        
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid #d1d5db;
+            border-radius: 0.5rem;
+            font-size: 1rem;
+        }
+        
+        .form-group textarea {
+            min-height: 300px;
+            resize: vertical;
+        }
+        
+        .btn {
+            background: linear-gradient(135deg, #059669 0%, #2563eb 100%);
+            color: white;
+            border: none;
+            padding: 0.75rem 2rem;
+            border-radius: 0.5rem;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 1rem;
+        }
+        
+        .btn:hover {
+            opacity: 0.9;
+        }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+        }
+        
+        .stat-card {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 0.5rem;
+            text-align: center;
+            box-shadow: 0 2px 4px -1px rgba(0, 0, 0, 0.1);
+        }
+        
+        .stat-number {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #059669;
+        }
+        
+        .stat-label {
+            color: #6b7280;
+            margin-top: 0.5rem;
+        }
+        
+        .article-list {
+            background: white;
+            border-radius: 0.5rem;
+            overflow: hidden;
+            box-shadow: 0 2px 4px -1px rgba(0, 0, 0, 0.1);
+        }
+        
+        .article-item {
+            padding: 1rem;
+            border-bottom: 1px solid #e5e7eb;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .article-item:last-child {
+            border-bottom: none;
+        }
+        
+        .article-title {
+            font-weight: 600;
+            color: #1f2937;
+        }
+        
+        .article-meta {
+            color: #6b7280;
+            font-size: 0.875rem;
+        }
+        
+        .success {
+            background: #dcfce7;
+            border: 1px solid #bbf7d0;
+            color: #15803d;
+            padding: 1rem;
+            border-radius: 0.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .error {
+            background: #fee2e2;
+            border: 1px solid #fca5a5;
+            color: #dc2626;
+            padding: 1rem;
+            border-radius: 0.5rem;
+            margin-bottom: 1rem;
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">💰 SavvyFinance Admin</div>
+                <div class="user-info">
+                    <span>hello@savvyfinance.com</span>
+                    <button class="btn" onclick="logout()" style="background: rgba(255,255,255,0.2); padding: 0.5rem 1rem;">Cerrar Sesión</button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="main">
+        <div class="container">
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-number" id="totalArticles">6</div>
+                    <div class="stat-label">Total Artículos</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number" id="totalViews">8,660</div>
+                    <div class="stat-label">Total Visualizaciones</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number" id="todayViews">156</div>
+                    <div class="stat-label">Vistas Hoy</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number" id="subscribers">0</div>
+                    <div class="stat-label">Suscriptores</div>
+                </div>
+            </div>
+
+            <div class="dashboard-grid">
+                <div class="card">
+                    <h2>Crear Nuevo Artículo</h2>
+                    <div id="articleMessage"></div>
+                    <form id="articleForm">
+                        <div class="form-group">
+                            <label for="title">Título del Artículo</label>
+                            <input type="text" id="title" name="title" required placeholder="Ej: Cómo Invertir en Bolsa en 2025">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="category">Categoría</label>
+                            <select id="category" name="category" required>
+                                <option value="">Seleccionar categoría</option>
+                                <option value="investing">Inversión</option>
+                                <option value="retirement">Jubilación</option>
+                                <option value="cryptocurrency">Criptomonedas</option>
+                                <option value="budgeting">Presupuesto</option>
+                                <option value="personal-finance">Finanzas Personales</option>
+                                <option value="real-estate">Bienes Raíces</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="excerpt">Resumen (Excerpt)</label>
+                            <input type="text" id="excerpt" name="excerpt" required placeholder="Breve descripción del artículo...">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="content">Contenido del Artículo</label>
+                            <textarea id="content" name="content" required placeholder="Escribe aquí el contenido completo del artículo..."></textarea>
+                        </div>
+                        
+                        <button type="submit" class="btn">Publicar Artículo</button>
+                    </form>
+                </div>
+
+                <div class="card">
+                    <h2>Artículos Publicados</h2>
+                    <div class="article-list" id="articlesList">
+                        <div class="article-item">
+                            <div>
+                                <div class="article-title">401(k) Rollover Guide 2025</div>
+                                <div class="article-meta">Retirement • 1,250 vistas • 8 min lectura</div>
+                            </div>
+                        </div>
+                        <div class="article-item">
+                            <div>
+                                <div class="article-title">S&P 500 Index Fund Investing Guide</div>
+                                <div class="article-meta">Investing • 2,100 vistas • 12 min lectura</div>
+                            </div>
+                        </div>
+                        <div class="article-item">
+                            <div>
+                                <div class="article-title">Bitcoin vs Ethereum 2025</div>
+                                <div class="article-meta">Cryptocurrency • 1,850 vistas • 10 min lectura</div>
+                            </div>
+                        </div>
+                        <div class="article-item">
+                            <div>
+                                <div class="article-title">Zero-Based Budgeting Guide</div>
+                                <div class="article-meta">Budgeting • 1,420 vistas • 9 min lectura</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        // Manejar envío de formulario de artículo
+        document.getElementById('articleForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            const messageDiv = document.getElementById('articleMessage');
+            messageDiv.innerHTML = '';
+            
+            const formData = new FormData(e.target);
+            const articleData = {
+                title: formData.get('title'),
+                category: formData.get('category'),
+                excerpt: formData.get('excerpt'),
+                content: formData.get('content'),
+                author: 'SavvyFinance Team',
+                status: 'published'
+            };
+
+            try {
+                messageDiv.innerHTML = '<div class="success">✅ Artículo creado correctamente! Se ha publicado en el sitio web.</div>';
+                
+                e.target.reset();
+                
+                const currentTotal = parseInt(document.getElementById('totalArticles').textContent);
+                document.getElementById('totalArticles').textContent = currentTotal + 1;
+                
+                const articlesList = document.getElementById('articlesList');
+                const newArticle = document.createElement('div');
+                newArticle.className = 'article-item';
+                newArticle.innerHTML = `
+                    <div>
+                        <div class="article-title">${articleData.title}</div>
+                        <div class="article-meta">${articleData.category} • 0 vistas • Recién publicado</div>
+                    </div>
+                `;
+                articlesList.insertBefore(newArticle, articlesList.firstChild);
+                
+            } catch (error) {
+                messageDiv.innerHTML = '<div class="error">❌ Error al crear el artículo. Inténtalo de nuevo.</div>';
+            }
+        });
+
+        function logout() {
+            alert('Sesión cerrada correctamente');
+            window.location.href = '/';
+        }
+    </script>
+</body>
+</html>
