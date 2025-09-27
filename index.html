@@ -291,14 +291,32 @@
     </footer>
 
     <script>
-        function showLogin() {
-            alert('🔐 Admin Credentials:\
-\
-Email: hello@savvyfinance.com\
-Password: SavvyFinance@!\
-\
-Note: Full admin panel available when backend is connected.');
+function showLogin() {
+    const email = prompt("Email:");
+    const password = prompt("Password:");
+    
+    if (!email || !password) return;
+    
+    // Llamada real al backend
+    fetch('https://savvyfinance-api-2025.onrender.com/api/auth/login', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+            email: email,
+            password: password
+        })
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.access_token) {
+            alert('🎉 ¡Login exitoso!\n\nBienvenido: ' + data.user.email + '\nRol: ' + data.user.role + '\n\n✅ Backend conectado correctamente!');
+        } else {
+            alert('❌ Credenciales incorrectas');
         }
-    </script>
-</body>
-</html>
+    })
+    .catch(error => {
+        alert('❌ Error de conexión: ' + error.message);
+    });
+}
